@@ -5,7 +5,7 @@
     background-image: url('/images/paralax.jpg');
 
     /* Full height */
-    height: 600px;
+    height: 500px;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;

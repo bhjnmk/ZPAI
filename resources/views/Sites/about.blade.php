@@ -1,7 +1,6 @@
-@extends('layouts.navbar');
+@extends('layouts.navbar')
 
 @section('content')
-
     @foreach($products as $product)
         <div>
             <button class="accordion">{{$product->title}}</button>
@@ -11,5 +10,4 @@
             </div>
         </div>
     @endforeach
-
 @endsection

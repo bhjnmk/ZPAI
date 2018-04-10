@@ -14,7 +14,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <script src="{{ asset('js/lightbox.js') }}"></script>
 
     <!-- Fonts -->
@@ -27,25 +26,46 @@
     <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-
+    <style>
+        header {
+            z-index: 5000;
+            position: fixed;
+            top: 0;
+            padding: 1em;
+            background-color: #222222;
+            clear: left;
+            text-align: center;
+            width: 100%;
+            height: 80px;
+        }
+        body {
+            z-index: -5000;
+        }
+        footer{
+            padding: 1em;
+            color: #A3A800;
+            background-color: #222222;
+            clear: left;
+            text-align: center;
+            display: block;"
+        }
+    </style>
 </head>
 <header>
     @yield('navbar')
 </header>
-
 <body>
-
 <div class="parallax"></div>
-<div>
-    <main class="py-4">
-        <div class="container">
-            @yield('content')
-        </div>
-    </main>
+<div id="contDiv">
+    <div id="scrollTo">
+        <main class="py-4">
+            <div class="container">
+                @yield('content')
+            </div>
+        </main>
+    </div>
 </div>
 <div class="parallax"></div>
-
 <script>
     /* accordiion script */
     var acc = document.getElementsByClassName("accordion");
@@ -62,11 +82,16 @@
             }
         });
     }
+    var element = document.getElementById("scrollTo");
+    element.scrollIntoView(true);
+    var winH = window.innerHeight;
+    var elemH = element.clientHeight;
+    var y = (winH-elemH)/2;
+    window.scrollBy(0, -y);
 </script>
-
 </body>
 
-<footer style="padding: 1em; color: white; background-color: black;  clear: left; text-align: center; display: block;">
+<footer>
     <p>&copy;ZPAI 2018, Magdalena Kuźmicz</p>
 </footer>
 
