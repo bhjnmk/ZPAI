@@ -20,35 +20,33 @@ Route::get('/',[
     'as' => 'sites.index'
 ]);;
 
-Route::get('/view',[
-    'uses' => 'AdminController@view',
-    'as' => 'admin.view'
+Route::get('/category',[
+    'uses' => 'SitesController@category',
+    'as' => 'admin.category'
 ]);
 
-Route::get('/about',[
-    'uses' => 'SitesController@about',
-    'as' => 'sites.about'
+Route::get('/admin',[
+    'uses' => 'AdminController@admin',
+    'as' => 'admin.admin'
 ]);
 
-Route::get('/addProd','AdminController@addProd');
-
-Route::get('/addCat','AdminController@addCat');
-
-Route::post('/save', [
+Route::post('/saveProd', [
     'uses' => 'AdminController@saveProd',
     'as' => 'admin.saveProd'
 ]);
 
-Route::post('/savecat', [
+Route::post('/saveCat', [
     'uses' => 'AdminController@saveCat',
     'as' => 'admin.saveCat'
 ]);
 
-
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('logout', [
+    'uses' => 'Auth\LoginController@logout',
+    'as' => 'auth.logout'
+]);
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Categories;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -26,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -42,5 +44,10 @@ class LoginController extends Controller
     {
         $categories = Categories::all();
         return view('auth.login', compact('categories'));
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/#section1');
     }
 }

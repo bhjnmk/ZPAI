@@ -1,11 +1,10 @@
-/* parallax */
-
 .parallax {
     /* The image used */
     background-image: url('/images/paralax.jpg');
 
     /* Full height */
-    height: 500px;
+    min-height: 300px;
+    height: auto;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -20,8 +19,6 @@
         background-attachment: scroll;
     }
 }*/
-
-/* accordion */
 
 .accordion {
     background-color: #eee;

@@ -29,47 +29,51 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <header>
-    @yield('navbar')
+    <style>
+        a {
+            color: #A3A800;
+            text-decoration: none;
+        }
+    </style>
+    <nav class="navbar navbar-inverse" role="navigation" style="color: white; margin: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a style="color:#E3E8B0" href="/"><span class="glyphicon glyphicon-fire"></span> WebSiteName</a>
+            </div>
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <u1 class="nav navbar-pills navbar-left">
+                        <li><a href="/#section0">Home</a></li>
+                        <li><a href="/#section1">News</a></li>
+                        <li><a href="/#section2">About</a></li>
+                        <li><a href="/#section3">Contact</a></li>
+                        <li><a href="/#section4">All products</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories</a>
+                            <ul class="dropdown-menu" role="menu">
+                                @foreach($categories as $category)
+                                    <li><a href="category?id={{$category->id}}">{{$category->title}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    </u1>
+                    @auth
+                        <ul class="nav navbar-pills navbar-right">
+                            <li><a href="admin">Admin</a></li>
+                            <li><a href="{{route('auth.logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        </ul>
+                    @endauth
+                </div>
+            </div>
+        </div>
+    </nav>
 </header>
 <body>
-
-<div class="parallax" id="section0"></div>
-<div style="position: absolute; left: 50%; top: 50%; width: 100%; text-align: center; color: #000; opacity: 0.8;">
-    @yield('info')
-</div>
 <div class="parallax"></div>
-<div class="parallax" id="section1" style="height: 150px;"></div>
 <div class="parallax">
     <main class="py-4" style="background-color:rgba(255,255,255,.6); ">
         <div class="container">
             @yield('content')
-        </div>
-    </main>
-</div>
-<div class="parallax"></div>
-<div class="parallax" id="section2" style="height: 150px;"></div>
-<div class="parallax">
-    <main class="py-4" style="background-color:rgba(255,255,255,.6); ">
-        <div class="container">
-            @yield('content2')
-        </div>
-    </main>
-</div>
-<div class="parallax"></div>
-<div class="parallax" id="section3" style="height: 150px;"></div>
-<div class="parallax">
-    <main class="py-4" style="background-color:rgba(255,255,255,.6); ">
-        <div class="container">
-            @yield('content3')
-        </div>
-    </main>
-</div>
-<div class="parallax"></div>
-<div class="parallax" id="section4" style="height: 150px;"></div>
-<div class="parallax">
-    <main class="py-4" style="background-color:rgba(255,255,255,.6); ">
-        <div class="container">
-            @yield('content4')
         </div>
     </main>
 </div>

@@ -4,26 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Categories;
 use App\Products;
-use App\Site;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class SitesController extends Controller
 {
     public function index()
     {
-        $categories = Categories::all();
-        return view('sites.index', compact('categories'));
-    }
-
-    public function about()
-    {
-        $categories = Categories::all();
-
-        //pobranie z bazy danych
         $products = Products::all();
-
-        //przekazanie do szablonu
-        return view('sites.about', compact('products','categories'));
+        $categories = Categories::all();
+        return view('sites.index', compact('products','categories'));
     }
+
+    public function category()
+    {
+        $products = Products::all();
+        $categories = Categories::all();
+        $id = Input::get('id');
+        return view('sites.category', compact('products','categories','id'));
+    }
+
 
 }

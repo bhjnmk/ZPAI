@@ -1,13 +1,16 @@
-@extends('layouts.navbar')
-
-@section('title','Add new product');
+@extends('layouts.categories')
 
 @section('content')
-    <h3>Adding new product</h3>
+    <h3>Edit product (id = </h3>
     <form action="{{route('admin.saveProd')}}" method="POST">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <div class="form-group">
-            <input type="number" name="category" class="form-control" placeholder="Category id">
+            <select name="category" class="form-control" style="height: auto;">
+                <option value="" disabled selected>Select category</option>
+                @foreach($categories as $category)
+                    <option value="{{$category->id}}">{{$category->title}}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="form-group">
@@ -26,5 +29,5 @@
             <button class="btn btn-primary">Add</button>
         </div>
     </form>
-    <button class="btn btn-primary" onclick="window.location.href='/view'">Back to view</button>
+    <button class="btn btn-primary" onclick="window.location.href='/admin#section2'">Back to products view</button>
 @endsection

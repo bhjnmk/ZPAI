@@ -13,36 +13,14 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function view()
+    public function admin()
     {
         //pobranie z bazy danych
         $categories = Categories::all();
         $products = Products::all();
 
         //przekazanie do szablonu
-        return view('admin.view', compact('products','categories'));
-    }
-
-    public function addProd()
-    {
-        $categories = Categories::all();
-        $products = Products::all();
-        return view('admin.addProd',compact('products','categories'));
-    }
-
-    public function addCat()
-    {
-        $categories = Categories::all();
-        $products = Products::all();
-        return view('admin.addCat',compact('products','categories'));
-    }
-
-    public function save(Request $request)
-    {
-        Products::create($request->all());
-        $categories = Categories::all();
-        $products = Products::all();
-        return view('admin.view', compact('products','categories'));
+        return view('admin.admin', compact('products','categories'));
     }
 
     public function saveCat(Request $request)
@@ -50,6 +28,16 @@ class AdminController extends Controller
         Categories::create($request->all());
         $categories = Categories::all();
         $products = Products::all();
-        return view('admin.view', compact('products','categories'));
+        return view('admin.save', compact('products','categories'));
     }
+
+    public function saveProd(Request $request)
+    {
+        Products::create($request->all());
+        $categories = Categories::all();
+        $products = Products::all();
+        return view('admin.save', compact('products','categories'));
+    }
+
+
 }
